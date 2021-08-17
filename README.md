@@ -11,3 +11,22 @@
 cargo build # Update dependencies and build project
 cargo run   # Update dependencies, build and run the project
 ```
+
+### Code style
+
+The project follows the official coding style.
+For automatic formatting, a tool is used - [**Rustftm**][rustfmt].
+
+> :information_source: [Rustfmt][rustfmt] - tool for formatting Rust code according to style guidelines.
+
+```shell
+# Installation guide 
+
+# Install tool
+rustup component add rustfmt
+
+# Run Rustfmt
+cargo fmt
+```
+
+[rustfmt]: https://github.com/rust-lang/rustfmt "Rustfmt - tool for formatting Rust code"
