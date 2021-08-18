@@ -2,10 +2,10 @@
 
 [![Status](https://img.shields.io/badge/Status-in%20progress-success)]()
 [![Rust & Cargo](https://img.shields.io/badge/Rust%20%26%20Cargo-1.54.0-blueviolet)](https://www.rust-lang.org/)
-[![Rocket](https://img.shields.io/badge/Rocket-0.5.0--rc.1-blue)](https://github.com/SergioBenitez/Rocket)
-[![Diesel](https://img.shields.io/badge/Diesel-1.4.7-yellow)](https://github.com/diesel-rs/diesel)
+[![Rocket](https://img.shields.io/badge/Rocket-0.5.0--rc.1-blue)](https://rocket.rs/)
+[![Diesel](https://img.shields.io/badge/Diesel-1.4.7-yellow)](https://diesel.rs/)
 
-## Getting started
+## Getting started  
 
 ```shell
 cargo build # Update dependencies and build project
