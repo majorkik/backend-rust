@@ -1,29 +1,74 @@
-# Rust backend
+<h1 style="text-align: center;">Rust web application</h1>
 
-[![Status](https://img.shields.io/badge/Status-in%20progress-success)]()
-[![Rust & Cargo](https://img.shields.io/badge/Rust%20%26%20Cargo-1.54.0-blueviolet)](https://www.rust-lang.org/)
-[![Rocket](https://img.shields.io/badge/Rocket-0.5.0--rc.1-blue)](https://rocket.rs/)
-[![Diesel](https://img.shields.io/badge/Diesel-1.4.7-yellow)](https://diesel.rs/)
+<p align="center">
+    <a>
+      <img src="https://img.shields.io/badge/Status-in%20progress-success?style=for-the-badge" alt="Status">
+  </a>
 
-## Getting started  
+  <a href="https://www.rust-lang.org/">
+      <img src="https://img.shields.io/badge/Rust%20%26%20Cargo-1.54.0-blueviolet?style=for-the-badge" alt="Rust & Cargo">
+  </a>
 
-### Run & Build
+  <a href="https://rocket.rs/">
+      <img src="https://img.shields.io/badge/Rocket-0.5.0--rc.1-blue?style=for-the-badge" alt="Rocket">
+  </a>
+
+  <a href="https://diesel.rs/">
+      <img src="https://img.shields.io/badge/Diesel-1.4.7-yellow?style=for-the-badge" alt="Diesel">
+  </a>
+
+  <a href="https://www.postgresql.org/">
+      <img src="https://img.shields.io/badge/Database-PostgreSQL-blueviolet?style=for-the-badge" alt="Database">
+  </a>
+</p>
+
+## Getting started
+
+### Configure environment variables
+
+Database configurations and other settings are stored in a `.env` file.
+
+First you need to rename the file `.env.sample` to` .env`, after which you need to fill it with your data.
+
+### Database (PostgreSQL)
+
+[**Diesel (ORM)**][diesel] is used to work with the database.
+
+> :information_source: More information on setting up **Diesel CLI** can be found on the [official website under Getting Started][diesel-getting-started].
+
+#### Installing Diesel CLI
 
 ```shell
-cargo build # Update dependencies and build project
-cargo run   # Update dependencies, build and run the project
+# Installing diesel_cli
+$ cargo install diesel_cli --no-default-features --features postgres
 ```
 
-### Testing
+#### Setup diesel cli
+
+First, you need to rename the `.env.sample` file to `.env` and fill in all the parameters with your data, then run the
+command `diesel setup`.
 
 ```shell
-cargo test  # Running tests
+# Will create a database (if not already created) and create an empty folder for migrations. 
+$ diesel setup 
 ```
 
-### Code style
+### :rocket: Run & Build
 
-The project follows the official coding style.
-For automatic formatting, a tool is used - [**Rustftm**][rustfmt].
+```shell
+$ cargo build # Update dependencies and build project
+$ cargo run   # Update dependencies, build and run the project
+```
+
+## Testing
+
+```shell
+$ cargo test  # Running tests
+```
+
+## Code style
+
+The project follows the official coding style. For automatic formatting, a tool is used - [**Rustftm**][rustfmt].
 
 > :information_source: [Rustfmt][rustfmt] - tool for formatting Rust code according to style guidelines.
 
@@ -31,13 +76,14 @@ For automatic formatting, a tool is used - [**Rustftm**][rustfmt].
 # Installation guide 
 
 # Install tool
-rustup component add rustfmt
+$ rustup component add rustfmt
 
 # Run Rustfmt
-cargo fmt
+$ cargo fmt
 ```
 
 ## License
+
 ```
 MIT License
 
@@ -60,3 +106,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 [rustfmt]: https://github.com/rust-lang/rustfmt "Rustfmt - tool for formatting Rust code"
+
+[diesel-getting-started]: https://diesel.rs/guides/getting-started "Diesel - Getting Started"
+
+[diesel]: https://diesel.rs/ "A safe, extensible ORM and Query Builder for Rust"
