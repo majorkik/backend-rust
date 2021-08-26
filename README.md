@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Rust web application</h1>
+<h1 align="center">Rust web application</h1>
 
 <p align="center">
     <a>
