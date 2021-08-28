@@ -22,6 +22,14 @@
   </a>
 </p>
 
+## :dart: Tech-stack
+
+- [**100% Rust**][rust]
+- **Network:** [Rocket][github-rocket]
+- **ORM:** [Diesel][github-diesel]
+- **Configuration:** [Dotenv][github-dotenv]
+- **Database:** PostgreSQL
+
 ## Getting started
 
 ### Configure environment variables
@@ -105,8 +113,16 @@ WHETHER IN AN ACTION OF  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTIO
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
+[rust]: https://www.rust-lang.org/ "Rust"
+
 [rustfmt]: https://github.com/rust-lang/rustfmt "Rustfmt - tool for formatting Rust code"
 
 [diesel-getting-started]: https://diesel.rs/guides/getting-started "Diesel - Getting Started"
 
 [diesel]: https://diesel.rs/ "A safe, extensible ORM and Query Builder for Rust"
+
+[github-diesel]: https://github.com/diesel-rs/diesel "Github: Diesel"
+
+[github-rocket]: https://github.com/SergioBenitez/Rocket "Github: Rocket"
+
+[github-dotenv]: https://github.com/dotenv-rs/dotenv "Github: Dotenv"
