@@ -7,7 +7,6 @@ use std::env;
 use diesel::prelude::*;
 use dotenv::dotenv;
 
-mod db;
 mod models;
 
 pub mod schema;
