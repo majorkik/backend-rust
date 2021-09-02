@@ -3,7 +3,7 @@ use jsonwebtoken::{Algorithm, EncodingKey, Header};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
-struct JwtToken {
+pub struct JwtToken {
     pub exp: i64,
     pub iss: String,
     pub sub: String,

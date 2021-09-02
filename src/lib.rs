@@ -8,6 +8,7 @@ use diesel::prelude::*;
 use dotenv::dotenv;
 
 mod models;
+mod utils;
 
 pub mod schema;
 
