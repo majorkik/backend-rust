@@ -1,5 +1,5 @@
 use crate::schema::users::{self, dsl::*};
-use bcrypt::{hash, verify, DEFAULT_COST};
+use bcrypt::verify;
 use diesel;
 use diesel::{prelude::*, result::Error, QueryDsl};
 use serde::{Deserialize, Serialize};

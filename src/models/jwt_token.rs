@@ -43,7 +43,7 @@ impl JwtToken {
 
 #[cfg(test)]
 mod test {
-    use self::super::JwtToken;
+    use super::JwtToken;
 
     #[test]
     fn token_generation_test() {
