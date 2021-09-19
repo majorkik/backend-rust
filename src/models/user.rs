@@ -9,9 +9,8 @@ pub struct User {
     pub id: i64,
     pub username: String,
     pub email: String,
-    pub password_hash: String,
-    pub avatar_url: Option<String>,
-    pub quot: Option<String>,
+    pub pass_hash: String,
+    pub user_role: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -28,8 +27,8 @@ impl User {
 
         match user {
             Ok(val) => {
-                if !val.password_hash.is_empty()
-                    && verify(&login.password_hash, &val.password_hash).unwrap()
+                if !val.pass_hash.is_empty()
+                    && verify(&login.password_hash, &val.pass_hash).unwrap()
                 {
                     // TODO: Add JWT token generation logic
 

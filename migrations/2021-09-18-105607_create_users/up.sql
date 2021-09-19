@@ -1,10 +1,9 @@
 CREATE TABLE IF NOT EXISTS users(
     id            bigserial PRIMARY KEY,
-    username      varchar(64) UNIQUE NOT NULL,
+    username      varchar(32) UNIQUE NOT NULL,
     email         varchar(64) UNIQUE NOT NULL,
-    password_hash varchar(128)  NOT NULL,
-    avatar_url    text,
-    quot          text
+    pass_hash   text NOT NULL,
+    user_role text[] NOT NULL DEFAULT '{"user"}'
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS user_index_id ON users (id);
