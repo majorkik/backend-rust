@@ -2,22 +2,36 @@
 name = "backend"
 version = "0.1.0"
 edition = "2018"
+author = "Rodion Belovitskiy"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 # network
-rocket = "0.5.0-rc.1"
+rocket = { version = "0.5.0-rc.1", features = ["json"] }
+
 # database
-diesel = { version = "1.4.7", features = ["postgres"] }
-serde = { version = "1.0.129", features = ["derive"] }
+diesel = { version = "1.4.8", features = ["postgres", "r2d2"] }
+diesel_migrations = { version = "1.4.0", features = ["postgres"] }
+
+# A generic serialization/deserialization framework
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.68"
+
 # enctryption
 bcrypt = "0.10.1"
 jsonwebtoken = "8.0.0-beta.2"
+
 # config
 dotenv = "0.15.0"
+
 # logging
-log = "0.4"
+log = "0.4.14"
 pretty_env_logger = "0.4.0"
+
 # other
-chrono = "0.4"
+chrono = "0.4.19"
+
+[dependencies.rocket_sync_db_pools]
+version = "0.1.0-rc.1"
+features = ["diesel_postgres_pool"]
