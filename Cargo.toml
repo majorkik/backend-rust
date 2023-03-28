@@ -6,18 +6,5 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-# network
-rocket = "0.5.0-rc.1"
-# database
-diesel = { version = "2.0.3", features = ["postgres"] }
 serde = { version = "1.0.129", features = ["derive"] }
-# enctryption
-bcrypt = "0.14.0"
-jsonwebtoken = "8.0.0-beta.2"
-# config
-dotenv = "0.15.0"
-# logging
-log = "0.4"
-pretty_env_logger = "0.4.0"
-# other
-chrono = "0.4"
+tide = "0.16.0"
