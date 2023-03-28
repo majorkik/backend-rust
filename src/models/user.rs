@@ -23,7 +23,7 @@ pub struct LoginDTO {
 }
 
 impl User {
-    pub fn login(conn: &PgConnection, login: LoginDTO) -> Option<User> {
+    pub fn login(conn: &mut PgConnection, login: LoginDTO) -> Option<User> {
         let user: Result<User, Error> = users
             .filter(username.eq(&login.username))
             .get_result::<User>(conn);

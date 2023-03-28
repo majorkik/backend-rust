@@ -9,15 +9,15 @@ edition = "2018"
 # network
 rocket = "0.5.0-rc.1"
 # database
-diesel = { version = "1.4.7", features = ["postgres"] }
+diesel = { version = "2.0.3", features = ["postgres"] }
 serde = { version = "1.0.129", features = ["derive"] }
 # enctryption
-bcrypt = "0.10.1"
+bcrypt = "0.14.0"
 jsonwebtoken = "8.0.0-beta.2"
 # config
 dotenv = "0.15.0"
 # logging
 log = "0.4"
-pretty_env_logger = "0.3"
+pretty_env_logger = "0.4.0"
 # other
 chrono = "0.4"
