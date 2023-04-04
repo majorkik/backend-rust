@@ -10,5 +10,24 @@ load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_regi
 
 rules_rust_dependencies()
 
-rust_register_toolchains()
+rust_register_toolchains(edition="2018")
 
+load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
+
+crate_universe_dependencies()
+
+load("@rules_rust//crate_universe:defs.bzl", "crates_repository", "crate")
+
+crates_repository(
+    name = "crate_index",
+    # cargo_lockfile = "//:Cargo.Bazel.lock",
+    # lockfile = "//:cargo-bazel-lock.json",
+    cargo_lockfile = "//:Cargo.lock",
+    lockfile = "//:Cargo.Bazel.lock",
+    manifests = ["//:Cargo.toml"],
+    rust_version = "1.60.0",
+)
+
+load("@crate_index//:defs.bzl", "crate_repositories")
+
+crate_repositories()

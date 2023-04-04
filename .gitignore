@@ -132,5 +132,7 @@ modules.xml
 .bazelversion
 # User-specific .bazelrc
 user.bazelrc
+cargo-bazel-lock.json
+Cargo.Bazel.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all
