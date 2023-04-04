@@ -90,6 +90,15 @@ $ rustup component add rustfmt
 $ cargo fmt
 ```
 
+# Bazel
+
+```shell
+CARGO_BAZEL_REPIN=true bazelisk sync --only=crate_index  
+
+# For windows build
+bazelisk --windows_enable_symlinks --output_user_root=C:/bazel_cache run --enable_runfiles //:app  --@rules_rust//rust/toolchain/channel=nightly
+```
+
 ## License
 
 ```
