@@ -93,10 +93,23 @@ $ cargo fmt
 # Bazel
 
 ```shell
+# Use bazel or bazelisk
+# Step 1: Make sure Cargo.lock exists, otherwise generate it
+cargo build
+
+# Step 2: Make sure Cargo.Bezel.lock exists, otherwise create it
+touch Cargo.Bazel.lock
+
+# Step 3: Regenerate the dependencies represented by the rule
 CARGO_BAZEL_REPIN=true bazelisk sync --only=crate_index  
 
-# For windows build
-bazelisk --windows_enable_symlinks --output_user_root=C:/bazel_cache run --enable_runfiles //:app  --@rules_rust//rust/toolchain/channel=nightly
+# Step 4: Build or Run
+bazelisk build :app
+# or
+bazelisk run :app 
+
+# (For windows build)
+bazelisk --windows_enable_symlinks run --enable_runfiles //:app --@rules_rust//rust/toolchain/channel=nightly
 ```
 
 ## License
