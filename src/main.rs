@@ -1,19 +1,19 @@
-use std::env::{self, VarError};
-
 use actix_web::{App, HttpServer};
 use routing::config_service;
+use std::env::{self, VarError};
 use surrealdb::engine::remote::ws::Ws;
 use surrealdb::opt::auth::Root;
 use surrealdb::Surreal;
 
+mod db;
 mod routing;
 
-struct DBConfig { 
+struct DBConfig {
     username: String,
     password: String,
 }
 
-fn load_db_config<'a>() -> Result<DBConfig, VarError> { 
+fn load_db_config() -> Result<DBConfig, VarError> {
     let username = env::var("surrealdb_username")?;
     let password = env::var("surrealdb_pass")?;
 
@@ -24,7 +24,7 @@ fn load_db_config<'a>() -> Result<DBConfig, VarError> {
 async fn main() -> std::io::Result<()> {
     // Checking that .the env file exists
     dotenvy::dotenv().expect(".env file not found");
-    
+
     // Loading configs
     let config = load_db_config().unwrap();
 
@@ -40,6 +40,8 @@ async fn main() -> std::io::Result<()> {
         })
         .await
         .expect("Invalid credentials for SurrealDB");
+
+    client.use_ns("test").use_db("test").await.unwrap();
 
     client
         .health()
