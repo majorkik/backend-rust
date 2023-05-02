@@ -1,4 +1,4 @@
-use actix_web::{App, HttpServer};
+use actix_web::{web, App, HttpServer};
 use routing::config_service;
 use std::env::{self, VarError};
 use surrealdb::engine::remote::ws::Ws;
@@ -49,8 +49,12 @@ async fn main() -> std::io::Result<()> {
         .expect("An error occurred while configuring SurrealDB");
 
     // Setup Actix server
-    HttpServer::new(|| App::new().configure(config_service))
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    HttpServer::new(move || {
+        App::new()
+            .app_data(web::Data::new(client.clone()))
+            .configure(config_service)
+    })
+    .bind(("127.0.0.1", 8080))?
+    .run()
+    .await
 }

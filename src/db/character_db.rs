@@ -7,16 +7,10 @@ pub struct Character {
     pub status: String,
 }
 
-#[derive(Debug, Serialize)]
-pub struct UpdateCharacterRequest {
-    pub name: String,
-    pub status: String,
-}
-
 pub struct CharacterDB;
 
 impl CharacterDB {
-    pub async fn get_all(db: Surreal<Client>, limit: u32, start: u32) -> Result<Vec<Character>> {
+    pub async fn get_all(db: &Surreal<Client>, limit: u32, start: u32) -> Result<Vec<Character>> {
         let mut response = db
             .query("SELECT * FROM character LIMIT $limit START $start")
             .bind(("limit", limit))
@@ -29,7 +23,7 @@ impl CharacterDB {
         Ok(characters)
     }
 
-    pub async fn get_by_name(db: Surreal<Client>, name: String) -> Result<Character> {
+    pub async fn get_by_name(db: &Surreal<Client>, name: String) -> Result<Character> {
         let character: Character = db.select(("character", name)).await?;
 
         dbg!(&character);
@@ -37,7 +31,7 @@ impl CharacterDB {
         Ok(character)
     }
 
-    pub async fn create(db: Surreal<Client>, character: Character) -> Result<Character> {
+    pub async fn create(db: &Surreal<Client>, character: Character) -> Result<Character> {
         let created: Character = db
             .create(("character", &character.name))
             .content(character)
@@ -48,7 +42,7 @@ impl CharacterDB {
         Ok(created)
     }
 
-    pub async fn update(db: Surreal<Client>, character: Character) -> Result<Character> {
+    pub async fn update(db: &Surreal<Client>, character: Character) -> Result<Character> {
         let response: Character = db
             .update(("character", &character.name))
             .merge(character)
@@ -59,7 +53,7 @@ impl CharacterDB {
         Ok(response)
     }
 
-    pub async fn delete_by_name(db: Surreal<Client>, name: String) -> Result<Character> {
+    pub async fn delete_by_name(db: &Surreal<Client>, name: String) -> Result<Character> {
         let deleted: Character = db.delete(("character", name)).await?;
 
         Ok(deleted)
